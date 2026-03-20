@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Full Tournament Overlay</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="config.js"></script>
+  <script src="assets/overlay.js"></script>
+</head>
+<body>
+  <div class="canvas">
+  
+<div class="panel top-left">
+  <div class="kicker">Now on stream</div>
+  <div class="big-title" id="eventTitle">Tournament Overlay</div>
+  <div class="subtle" id="venueValue"></div>
+</div>
+
+<div class="panel standings">
+  <div class="kicker">Leaderboard</div>
+  <div class="table-title">Top 8 Standings</div>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Team</th><th>W</th><th>L</th><th>Diff</th></tr>
+    </thead>
+    <tbody id="standingsBody"></tbody>
+  </table>
+</div>
+
+<div class="panel next-card">
+  <div class="kicker" id="nextRound">Next</div>
+  <div class="match" id="nextMatchId"></div>
+  <div class="teams" id="nextTeams"></div>
+</div>
+
+<div class="panel feature-card">
+  <div class="kicker">Featured team</div>
+  <div class="team" id="featureTeam"></div>
+  <div class="org" id="featureOrg"></div>
+  <div class="id" id="featureId"></div>
+</div>
+
+<div class="panel scoreboard">
+  <div class="team-card red">
+    <div class="team-label">Red alliance</div>
+    <div class="team-name" id="redTeam">Red Alliance</div>
+  </div>
+  <div class="panel score-box" style="background:rgba(214,69,69,.18)">
+    <div id="redScore">0</div>
+  </div>
+  <div class="team-card blue">
+    <div class="team-label">Blue alliance</div>
+    <div class="team-name" id="blueTeam">Blue Alliance</div>
+  </div>
+  <div class="center-meta">
+    <div class="meta-kicker">Live match</div>
+    <div class="meta-title" id="matchMeta"></div>
+    <div class="meta-sub">Winner: <span id="winnerValue">—</span></div>
+    <div class="pill" id="statusPill">Live</div>
+  </div>
+</div>
+
+  </div>
+</body>
+</html>
