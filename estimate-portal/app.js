@@ -87,9 +87,11 @@
       listEl.appendChild(li);
     }
 
+    var totalFormatted = formatMoney(data.total, currency);
+    document.getElementById("header-total").textContent = totalFormatted;
     document.getElementById("subtotal").textContent = formatMoney(data.subtotal, currency);
     document.getElementById("tax").textContent = formatMoney(data.tax, currency);
-    document.getElementById("total").textContent = formatMoney(data.total, currency);
+    document.getElementById("total").textContent = totalFormatted;
 
     var status = data.status || "pending";
     var approveBtn = document.getElementById("approve-btn");
