@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Customer portal: each estimate uses an unguessable document ID (e.g. random token in the link).
+    // list/query is denied so customers cannot discover other estimates.
+    match /estimates/{estimateId} {
+      allow get: if true;
+      allow list: if false;
+
+      allow create, delete: if false;
+
+      // Approve sale: only while pending; only status + approvedAt may change.
+      // approvedAt uses serverTimestamp() from the client; omit strict type check (sentinel during eval).
+      allow update: if resource.data.status == 'pending'
+        && request.resource.data.status == 'approved'
+        && request.resource.data.diff(resource.data).changedKeys().hasOnly(['status'])
+        && request.resource.data.diff(resource.data).addedKeys().hasOnly(['approvedAt'])
+        && request.resource.data.diff(resource.data).removedKeys().size() == 0;
+    }
+  }
+}

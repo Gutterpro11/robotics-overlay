@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your estimate</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <p class="eyebrow">Estimate</p>
+      <h1 id="title">Loading…</h1>
+    </header>
+
+    <main class="main">
+      <div id="state-loading" class="card state" aria-live="polite">
+        <p class="muted">Fetching your estimate…</p>
+      </div>
+
+      <div id="state-error" class="card state hidden" role="alert">
+        <p id="error-message" class="error-text"></p>
+        <p class="muted small">If you opened this from an email or text, check that the link is complete. For help, contact us directly.</p>
+      </div>
+
+      <div id="state-estimate" class="hidden">
+        <section class="card">
+          <div class="meta">
+            <div>
+              <span class="label">Customer</span>
+              <p id="customer-name" class="value"></p>
+            </div>
+            <div>
+              <span class="label">Email</span>
+              <p id="customer-email" class="value"></p>
+            </div>
+          </div>
+          <div id="notes-wrap" class="notes-wrap hidden">
+            <span class="label">Notes</span>
+            <p id="notes" class="notes"></p>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2 class="section-title">Line items</h2>
+          <ul id="line-items" class="line-items"></ul>
+          <div class="totals">
+            <div class="total-row">
+              <span>Subtotal</span>
+              <span id="subtotal"></span>
+            </div>
+            <div class="total-row">
+              <span>Tax</span>
+              <span id="tax"></span>
+            </div>
+            <div class="total-row total-strong">
+              <span>Total</span>
+              <span id="total"></span>
+            </div>
+          </div>
+        </section>
+
+        <section id="approval-section" class="card approval">
+          <p id="status-pending" class="status status-pending hidden">Review the estimate above, then approve to confirm the sale.</p>
+          <p id="status-approved" class="status status-approved hidden">You approved this estimate. Thank you.</p>
+          <button type="button" id="approve-btn" class="btn primary hidden">Approve sale</button>
+          <p id="approve-error" class="error-text small hidden" role="alert"></p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p class="muted small">This page shows only the estimate linked in your URL.</p>
+    </footer>
+  </div>
+
+  <script src="firebase-config.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
